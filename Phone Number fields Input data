@@ -1,0 +1,21 @@
+
+document.getElementById('P19_PHONE_NO').addEventListener('input', function(y) {
+  var value = y.target.value.replace(/\D/g, ''); // remove non-digit characters
+  if (value.length > 11) {
+    value = value.substring(0, 11); // limit to 11 characters
+  }
+  y.target.value = value; // update input field with sanitized value
+});
+
+document.getElementById('P19_PHONE_NO').addEventListener('blur', function(y) {
+  var value = y.target.value;
+  if (value.length < 11) {
+    // show error message if input value is less than 11 digits
+    alert('Invalid phone number. Please enter a 11-digit number.');
+    y.target.value = ''; // clear input field
+  } else if (value.length === 11 && value.substring(0, 2) !== '03') {
+    // show error message if input value doesn't match pattern
+    alert('Invalid phone number. Please enter a 11-digit number starting with 03.');
+    y.target.value = ''; // clear input field
+  }
+});
